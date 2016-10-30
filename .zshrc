@@ -1,0 +1,81 @@
+# =====================================================
+# This program is for the Japanese.
+# Therefore, comments are written in Japanese.
+# All will be understood by reading the source code.
+# =====================================================
+# File name          : .zshrc
+# Author             : Hayato Doi
+# Last Update        : 2016/10/22
+# Since              : 2015/7/14
+# Outline            : zshの設定ファイル
+# Update information : ls 等の色を変更
+# Copyright (c) 2015-2016, Hayato Doi
+
+# 環境変数LANGの設定
+export LANG=ja_JP.UTF-8
+
+# 補完機能設定
+autoload -U compinit
+compinit
+
+# プロンプトを2行で表示、時刻を表示
+RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}%m%f""(%*)"" %~""
+%B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
+RootPrompt2="%B%F{yellow}>>>%f%b "
+
+OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{blue}%m%f""(%*)"" %~""
+%B%F{green}>%f%F{cyan}>%f%F{blue}>%f%b "
+OtherPrompt2="%B%F{blue}>>>%f%b "
+# root,非rootでコマンドの色を変える
+case ${UID} in
+0)	
+	PROMPT=$RootPrompt
+	PROMPT2=$RootPrompt2
+	;;
+*)
+	PROMPT=$OtherPrompt
+	PROMPT2=$OtherPrompt2
+ 	;;
+esac
+
+# 履歴の設定
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt hist_ignore_dups
+setopt share_history
+
+case "${TERM}" in
+kterm*|xterm|mlterm)
+  precmd() {
+    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+  }
+  ;;
+esac
+
+# viキーバインド設定
+bindkey -v
+
+# ls 等の色設定
+export LS_COLORS='di=36;01:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+# 補完候補一覧をカラー表示する設定
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# 補完候補のカーソル選択を有効にする設定
+zstyle ':completion:*:default' menu select=1
+
+# コマンドエラーの修正
+setopt nonomatch
+
+#補完を大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# エイリアス
+alias grep='grep --colour=auto'
+alias ls='ls --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
+alias lst='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
+alias l='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
+alias la='ls -la --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
+alias ll='ls -l --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
+alias sudo='sudo -E'
