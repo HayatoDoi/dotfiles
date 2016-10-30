@@ -1,5 +1,4 @@
 " =====================================================
-" testtest
 " This program is for the Japanese.
 " Therefore, comments are written in Japanese.
 " All will be understood by reading the source code.
