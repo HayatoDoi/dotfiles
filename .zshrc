@@ -71,6 +71,9 @@ setopt nonomatch
 #補完を大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# ピッピッって音を消す
+setopt nolistbeep
+
 # エイリアス
 alias grep='grep --colour=auto'
 alias ls='ls --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
