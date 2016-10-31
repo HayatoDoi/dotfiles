@@ -1,14 +1,15 @@
 " =====================================================
+" testtest
 " This program is for the Japanese.
 " Therefore, comments are written in Japanese.
 " All will be understood by reading the source code.
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2016/10/27
+" Last Update        : 2016/10/31
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : ヤンクする最大量の変更
+" Update information : 不可視文字の表示
 " Copyright (c) 2015-2016, Hayato Doi
 
 " 行番号のの表示
@@ -45,6 +46,10 @@ imap <C-j> <esc>
 
 " 表示するファイルのタイプを環境変数から取ってくる
 filetype on
+
+" タブを表示する
+set list
+set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 
 " ヤンクする最大行のを1000にする。
 set viminfo='20,\"1000

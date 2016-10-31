@@ -5,10 +5,10 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2016/10/22
+# Last Update        : 2016/10/31
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Update information : ls 等の色を変更
+# Update information : タイプミスでなる音を消す設定
 # Copyright (c) 2015-2016, Hayato Doi
 
 # 環境変数LANGの設定
