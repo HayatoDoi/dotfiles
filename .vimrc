@@ -39,7 +39,7 @@ syntax on
 colorscheme desert
 
 " 行番号の色
-highlight LineNr ctermfg=white
+hi LineNr ctermfg=white
 
 " escをCtrl+jに変更
 imap <C-j> <esc>
@@ -47,9 +47,15 @@ imap <C-j> <esc>
 " 表示するファイルのタイプを環境変数から取ってくる
 filetype on
 
-" タブを表示する
+" カーソル行のハイライト
+set cursorline
+
+" タブの表示
 set list
-set listchars=tab:»-,trail:-,nbsp:%,eol:↲
+set listchars=tab:»-
+
+" タブの色
+hi SpecialKey ctermfg=241 ctermbg=NONE
 
 " ヤンクする最大行のを1000にする。
 set viminfo='20,\"1000
@@ -62,6 +68,7 @@ set laststatus=2
 
 " lightlineのテーマをwombatにする。
 let g:lightline = {'colorscheme':'wombat'}
+
 
 " ==== 初回起動 ====
 if has('vim_starting')
