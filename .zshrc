@@ -5,15 +5,15 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2016/10/31
+# Last Update        : 2016/10/22
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Update information : タイプミスでなる音を消す設定
+# Update information : ls 等の色を変更
 # Copyright (c) 2015-2016, Hayato Doi
 
 # 環境変数LANGの設定
 export LANG=ja_JP.UTF-8
-
+export XDG_CONFIG_HOME=$HOME/.config
 # 補完機能設定
 autoload -U compinit
 compinit
@@ -71,9 +71,6 @@ setopt nonomatch
 #補完を大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# ピッピッって音を消す
-setopt nolistbeep
-
 # エイリアス
 alias grep='grep --colour=auto'
 alias ls='ls --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
@@ -82,7 +79,7 @@ alias l='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Infor
 alias la='ls -la --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
 alias ll='ls -l --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
 alias sudo='sudo -E'
-
+alias vim='nvim'
 # 自作コマンド
 function envproxy(){
 	# Function name      : envproxy

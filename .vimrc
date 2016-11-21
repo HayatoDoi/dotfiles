@@ -6,10 +6,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2016/10/31
+" Last Update        : 2016/11/18
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : 不可視文字の表示
+" Update information : neovimに移行
 " Copyright (c) 2015-2016, Hayato Doi
 
 " 行番号のの表示
@@ -26,6 +26,7 @@ set tabstop=4
 
 " タブの幅（挿入）
 set shiftwidth=4
+
 " タブをタブとして扱う
 set noexpandtab
 
@@ -34,9 +35,6 @@ set showmatch
 
 " 色を付ける
 syntax on
-
-" カラースキーマの指定
-colorscheme desert
 
 " 行番号の色
 hi LineNr ctermfg=white
@@ -66,9 +64,17 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " 色の設定を変更
 set laststatus=2
 
+" クリップボードを共有する
+set clipboard=unnamedplus
+
 " lightlineのテーマをwombatにする。
 let g:lightline = {'colorscheme':'wombat'}
 
+"キーのショートカット
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
 
 " ==== 初回起動 ====
 if has('vim_starting')
