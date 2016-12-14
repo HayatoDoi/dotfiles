@@ -5,10 +5,10 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2016/10/22
+# Last Update        : 2016/12/14
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Update information : ls 等の色を変更
+# Update information : git branchの表示(デザインの変更)
 # Copyright (c) 2015-2016, Hayato Doi
 
 # 環境変数LANGの設定
@@ -37,13 +37,11 @@ precmd() {
 # RPROMPT="%1(v|%F{green}%1v%f|)"
 
 # プロンプトを2行で表示、時刻を表示
-RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}%m%f""(%*)"" %~""
-%F{red}[%1(v|%1v|-----)]%f
+RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}[%1(v|%1v|-----)]%f""(%*)"" %~""
 %B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
 RootPrompt2="%B%F{yellow}>>>%f%b "
 
-OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{blue}%m%f""(%*)"" %~""
-%F{green}[%1(v|%1v|-----)]%f
+OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{blue}[%1(v|%1v|-----)]%f""(%*)"" %~""
 %B%F{green}>%f%F{cyan}>%f%F{blue}>%f%b "
 OtherPrompt2="%B%F{blue}>>>%f%b "
 # root,非rootでコマンドの色を変える
