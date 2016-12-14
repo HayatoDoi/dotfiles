@@ -18,6 +18,23 @@ export XDG_CONFIG_HOME=$HOME/.config
 autoload -U compinit
 compinit
 
+# VCSの情報を取得するzshの便利関数 vcs_infoを使う
+autoload -Uz vcs_info
+
+# 表示フォーマットの指定
+# %b ブランチ情報
+# %a アクション名(mergeなど)
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
 # プロンプトを2行で表示、時刻を表示
 RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}%m%f""(%*)"" %~""
 %B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
@@ -35,7 +52,7 @@ case ${UID} in
 *)
 	PROMPT=$OtherPrompt
 	PROMPT2=$OtherPrompt2
- 	;;
+	;;
 esac
 
 # 履歴の設定
@@ -47,10 +64,10 @@ setopt share_history
 
 case "${TERM}" in
 kterm*|xterm|mlterm)
-  precmd() {
-    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-  }
-  ;;
+	precmd() {
+		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+	}
+	;;
 esac
 
 # viキーバインド設定
@@ -134,26 +151,26 @@ function envproxy(){
 	fi
 
 	case $1 in
-		on) #echo on
+		on ) #echo on
 			export http_proxy=$HttpProxy
 			export https_proxy=$HttpsProxy
 			export ftp_proxy=$FtpPrpxy
 			export no_proxy=$NoProxy
 			;;
-		off) #echo of
+		off ) #echo of
 			unset http_proxy
 			unset https_proxy
 			unset ftp_proxy
 			unset no_proxy
 			;;
-		--version) #echo version
+		--version ) #echo version
 			echo ${ProgramName}' '${Version}
 			echo $Copyright
 			;;
-		--help) #echo help
+		--help ) #echo help
 			echo ${ManualText}
 			;;
-		--) shift #echo '--'
+		* ) shift #echo '--'
 			echo ${ErrorArgument}
 			;;
 	esac
@@ -209,24 +226,24 @@ function gitproxy(){
 	fi
 
 	case $1 in
-		on) #echo on
+		on ) #echo on
 			git config --global http.proxy http://${HttpProxy}
 			git config --global https.proxy https://${HttpsProxy}
 			git config --global url.'https://'.insteadOf git://
 			;;
-		off) #echo of
+		off ) #echo of
 			git config --global --unset http.proxy
 			git config --global --unset https.proxy
 			git config --global --unset url.'https://'.insteadOf git://
 			;;
-		--version) #echo version
+		--version ) #echo version
 			echo ${ProgramName}' '${Version}
 			echo $Copyright
 			;;
-		--help) #echo help
+		--help ) #echo help
 			echo ${ManualText}
 			;;
-		--) shift #echo '--'
+		* ) shift #echo '--'
 			echo ${ErrorArgument}
 			;;
 	esac
