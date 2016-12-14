@@ -24,23 +24,26 @@ autoload -Uz vcs_info
 # 表示フォーマットの指定
 # %b ブランチ情報
 # %a アクション名(mergeなど)
-zstyle ':vcs_info:*' formats '[%b]'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () {
+zstyle ':vcs_info:*' formats '%b'
+zstyle ':vcs_info:*' actionformats '%b|%a'
+# zshが更新されるたびに呼ばれる部分
+precmd() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-RPROMPT="%1(v|%F{green}%1v%f|)"
+# RPROMPT="%1(v|%F{green}%1v%f|)"
 
 # プロンプトを2行で表示、時刻を表示
 RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}%m%f""(%*)"" %~""
+%F{red}[%1(v|%1v|-----)]%f
 %B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
 RootPrompt2="%B%F{yellow}>>>%f%b "
 
 OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{blue}%m%f""(%*)"" %~""
+%F{green}[%1(v|%1v|-----)]%f
 %B%F{green}>%f%F{cyan}>%f%F{blue}>%f%b "
 OtherPrompt2="%B%F{blue}>>>%f%b "
 # root,非rootでコマンドの色を変える
@@ -48,10 +51,12 @@ case ${UID} in
 0)	
 	PROMPT=$RootPrompt
 	PROMPT2=$RootPrompt2
+	unset RPROMPT
 	;;
 *)
 	PROMPT=$OtherPrompt
 	PROMPT2=$OtherPrompt2
+	unset RPROMPT
 	;;
 esac
 
@@ -61,14 +66,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups
 setopt share_history
-
-case "${TERM}" in
-kterm*|xterm|mlterm)
-	precmd() {
-		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-	}
-	;;
-esac
 
 # viキーバインド設定
 bindkey -v
