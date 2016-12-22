@@ -5,10 +5,10 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2016/12/14
+# Last Update        : 2016/12/22
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Update information : git branchの表示(デザインの変更)
+# Update information : /var/tmp/trashにゴミ箱ファイルを作成するように。
 # Copyright (c) 2015-2016, Hayato Doi
 
 # 環境変数LANGの設定
@@ -46,16 +46,16 @@ OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{blue}[%1(v|%1v|
 OtherPrompt2="%B%F{blue}>>>%f%b "
 # root,非rootでコマンドの色を変える
 case ${UID} in
-0)	
-	PROMPT=$RootPrompt
-	PROMPT2=$RootPrompt2
-	unset RPROMPT
-	;;
-*)
-	PROMPT=$OtherPrompt
-	PROMPT2=$OtherPrompt2
-	unset RPROMPT
-	;;
+	0)	
+		PROMPT=$RootPrompt
+		PROMPT2=$RootPrompt2
+		unset RPROMPT
+		;;
+	*)
+		PROMPT=$OtherPrompt
+		PROMPT2=$OtherPrompt2
+		unset RPROMPT
+		;;
 esac
 
 # 履歴の設定
@@ -92,6 +92,10 @@ alias la='ls -la --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Infor
 alias ll='ls -l --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
 alias sudo='sudo -E'
 alias vim='nvim'
+#backupの作成
+alias rm='mv -b -t /var/tmp/trash'
+alias cp='cp -b'
+alias mv='mv -b'
 # 自作コマンド
 function envproxy(){
 	# Function name      : envproxy
