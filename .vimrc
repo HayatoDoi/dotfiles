@@ -6,10 +6,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2016/11/18
+" Last Update        : 2016/12/24
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : neovimに移行
+" Update information : go のオールインワンライブラリを追加
 " Copyright (c) 2015-2016, Hayato Doi
 
 " 行番号のの表示
@@ -93,6 +93,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'scrooloose/nerdtree'
 	" ステータスラインの表示内容をシャレオツに
 	NeoBundle 'itchyny/lightline.vim'
+	" goのオールインワンプラグイン
+	NeoBundle 'fatih/vim-go'
 " ---- インストールするプラグインをここに記述 ----
 call neobundle#end()
 
