@@ -5,15 +5,16 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2016/12/22
+# Last Update        : 2016/12/14
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Update information : /var/tmp/trashにゴミ箱ファイルを作成するように。
+# Update information : git branchの表示(デザインの変更)
 # Copyright (c) 2015-2016, Hayato Doi
 
 # 環境変数LANGの設定
 export LANG=ja_JP.UTF-8
-export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME=${HOME}/.config
+export GOPATH=${HOME}/.go
 # 補完機能設定
 autoload -U compinit
 compinit
@@ -66,7 +67,7 @@ setopt hist_ignore_dups
 setopt share_history
 
 # viキーバインド設定
-bindkey -v
+# bindkey -v
 
 # ls 等の色設定
 export LS_COLORS='di=36;01:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
