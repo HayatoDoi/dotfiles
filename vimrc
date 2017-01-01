@@ -96,10 +96,10 @@ call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 
-"call dein#add('tomtom/tcomment_vim')
-"call dein#add('scrooloose/nerdtree')
-"call dein#add('itchyny/lightline.vim')
-"call dein#add('fatih/vim-go')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('itchyny/lightline.vim')
+call dein#add('fatih/vim-go')
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
