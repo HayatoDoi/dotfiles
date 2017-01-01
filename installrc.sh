@@ -4,7 +4,7 @@
 # Last Update        : 2017/1/1
 # Since              : 2017/1/1
 # Outline            : rc file 系を自動でインストールしておくやつ。
-# Update information : go のオールインワンライブラリを追加
+# Update information : 
 # Copyright (c) 2017, Hayato Doi
 
 
@@ -35,10 +35,9 @@ fi
 
 # download rc files.
 git clone https://github.com/nikaidoumari/rc.git ${HOME}/.rc
-ln -s ${HOME}/.rc/.zshrc ${HOME}/.zshrc
-ln -s ${HOME}/.rc/.tmux.conf ${HOME}/.tmux.conf
-ln -s ${HOME}/.rc/.vimrc ${HOME}/.config/nvim/init.vim
-ln -s ${HOME}/.rc
+ln -s ${HOME}/.rc/zshrc ${HOME}/.zshrc
+ln -s ${HOME}/.rc/tmux.conf ${HOME}/.tmux.conf
+ln -s ${HOME}/.rc/vimrc ${HOME}/.config/nvim/init.vim
 
 git clone https://github.com/Shougo/dein.vim.git ${HOME}/.config/nvim/dein.vim
 # wget nononono.net/.zshrc.php -O ${HOME}/.zshrc
