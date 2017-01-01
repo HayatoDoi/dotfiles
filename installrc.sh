@@ -1,4 +1,12 @@
 #!/bin/sh
+# File name          : installrc.sh
+# Author             : Hayato Doi
+# Last Update        : 2017/1/1
+# Since              : 2017/1/1
+# Outline            : rc file 系を自動でインストールしておくやつ。
+# Update information : go のオールインワンライブラリを追加
+# Copyright (c) 2017, Hayato Doi
+
 
 # command check
 if [ type git ];then
@@ -31,6 +39,8 @@ ln -s ${HOME}/.rc/.zshrc ${HOME}/.zshrc
 ln -s ${HOME}/.rc/.tmux.conf ${HOME}/.tmux.conf
 ln -s ${HOME}/.rc/.vimrc ${HOME}/.config/nvim/init.vim
 ln -s ${HOME}/.rc
+
+git clone https://github.com/Shougo/dein.vim.git ${HOME}/.config/nvim/dein.vim
 # wget nononono.net/.zshrc.php -O ${HOME}/.zshrc
 # wget nononono.net/.vimrc.php -O ${HOME}/.config/nvim/init.vim
 # wget nononono.net/.tmux.conf.php -O ${HOME}/.tmux.conf

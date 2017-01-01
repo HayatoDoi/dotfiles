@@ -6,11 +6,11 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2016/12/24
+" Last Update        : 2017/1/1/
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : go のオールインワンライブラリを追加
-" Copyright (c) 2015-2016, Hayato Doi
+" Update information : dein.vimに移行
+" Copyright (c) 2015-2017, Hayato Doi
 
 " 行番号のの表示
 set number
@@ -76,27 +76,40 @@ nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
 
-" ==== 初回起動 ====
-if has('vim_starting')
-	" runtimepathにneobundleのパスを指定する
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+" dein.vim
+if &compatible
+	set nocompatible
 endif
-" ---- 初回起動 ----
+set runtimepath+={'~/.config/nvim/dein.vim'}
 
-" NeoBundleを初期化
-call neobundle#begin(expand('~/.vim/bundle/'))
+call dein#begin({'~/.config/nvim/'})
+call dein#add({'tomtom/tcomment_vim'})
+call dein#add({'scrooloose/nerdtree'})
+call dein#add({'itchyny/lightline.vim'})
+call dein#add({'fatih/vim-go'})
+call dein#end()
 
-" ==== インストールするプラグインをここに記述 ====
-	" コメントON/OFFを手軽に実行
-	NeoBundle 'tomtom/tcomment_vim'
-	" ファイルマネージャー
-	NeoBundle 'scrooloose/nerdtree'
-	" ステータスラインの表示内容をシャレオツに
-	NeoBundle 'itchyny/lightline.vim'
-	" goのオールインワンプラグイン
-	NeoBundle 'fatih/vim-go'
-" ---- インストールするプラグインをここに記述 ----
-call neobundle#end()
-
-" ファイルタイプ別のプラグイン/インデントを有効にする
+" " ==== 初回起動 ====
+" if has('vim_starting')
+" 	" runtimepathにneobundleのパスを指定する
+" 	set runtimepath+=~/.vim/bundle/neobundle.vim/
+" endif
+" " ---- 初回起動 ----
+"
+" " NeoBundleを初期化
+" call neobundle#begin(expand('~/.vim/bundle/'))
+"
+" " ==== インストールするプラグインをここに記述 ====
+" 	" コメントON/OFFを手軽に実行
+" 	NeoBundle 'tomtom/tcomment_vim'
+" 	" ファイルマネージャー
+" 	NeoBundle 'scrooloose/nerdtree'
+" 	" ステータスラインの表示内容をシャレオツに
+" 	NeoBundle 'itchyny/lightline.vim'
+" 	" goのオールインワンプラグイン
+" 	NeoBundle 'fatih/vim-go'
+" " ---- インストールするプラグインをここに記述 ----
+" call neobundle#end()
+"
+" " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
