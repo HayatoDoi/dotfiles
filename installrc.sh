@@ -9,7 +9,7 @@
 
 
 # command check
-if [ type git ];then
+if ! type git > /dev/null 2>&1;then                                                                                                                                 
 	echo "git command is not installed"
 	exit 1
 fi
