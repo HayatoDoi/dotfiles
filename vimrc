@@ -86,64 +86,34 @@ set runtimepath+=/home/server/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
 call dein#load_state('~/.config/nvim/dein')
-  call dein#begin('~/.config/nvim/dein')
+call dein#begin('~/.config/nvim/dein')
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
+" Let dein manage dein
+" Required:
+call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 
-  " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
-  call dein#add({'tomtom/tcomment_vim'})
-  call dein#add({'scrooloose/nerdtree'})
-  call dein#add({'itchyny/lightline.vim'})
-  call dein#add({'fatih/vim-go'})
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+"call dein#add('tomtom/tcomment_vim')
+"call dein#add('scrooloose/nerdtree')
+"call dein#add('itchyny/lightline.vim')
+"call dein#add('fatih/vim-go')
+" You can specify revision/branch/tag.
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
+" Required:
+call dein#end()
+call dein#save_state()
 
 " Required:
 filetype plugin indent on
 syntax enable
-
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+if dein#check_install()
+	call dein#install()
+endif
 
 "End dein Scripts-------------------------
 
-
-
-"End dein Scripts-------------------------
-
-" " ==== 初回起動 ====
-" if has('vim_starting')
-" 	" runtimepathにneobundleのパスを指定する
-" 	set runtimepath+=~/.vim/bundle/neobundle.vim/
-" endif
-" " ---- 初回起動 ----
-"
-" " NeoBundleを初期化
-" call neobundle#begin(expand('~/.vim/bundle/'))
-"
-" " ==== インストールするプラグインをここに記述 ====
-" 	" コメントON/OFFを手軽に実行
-" 	NeoBundle 'tomtom/tcomment_vim'
-" 	" ファイルマネージャー
-" 	NeoBundle 'scrooloose/nerdtree'
-" 	" ステータスラインの表示内容をシャレオツに
-" 	NeoBundle 'itchyny/lightline.vim'
-" 	" goのオールインワンプラグイン
-" 	NeoBundle 'fatih/vim-go'
-" " ---- インストールするプラグインをここに記述 ----
-" call neobundle#end()
-"
-" " ファイルタイプ別のプラグイン/インデントを有効にする
-" filetype plugin indent on
