@@ -39,7 +39,7 @@ ln -s ${HOME}/.rc/zshrc ${HOME}/.zshrc
 ln -s ${HOME}/.rc/tmux.conf ${HOME}/.tmux.conf
 ln -s ${HOME}/.rc/vimrc ${HOME}/.config/nvim/init.vim
 
-git clone https://github.com/Shougo/dein.vim.git ${HOME}/.config/nvim/dein
+git clone https://github.com/Shougo/dein.vim.git ${HOME}/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 # wget nononono.net/.zshrc.php -O ${HOME}/.zshrc
 # wget nononono.net/.vimrc.php -O ${HOME}/.config/nvim/init.vim
 # wget nononono.net/.tmux.conf.php -O ${HOME}/.tmux.conf
