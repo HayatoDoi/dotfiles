@@ -82,7 +82,7 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=~/.condig/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
 call dein#begin(expand('~/.config/nvim/dein/'))
