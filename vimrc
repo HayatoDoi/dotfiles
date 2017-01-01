@@ -82,10 +82,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=~/.condig/nvim/repos/github.com/Shougo/dein.vim
+set runtimepath^=~/.condig/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin(expand('~/.config/nvim/'))
+call dein#begin(expand('~/.config/nvim/dein/'))
 
 " Let dein manage dein
 " Required:
@@ -139,4 +139,4 @@ endif
 " call neobundle#end()
 "
 " " ファイルタイプ別のプラグイン/インデントを有効にする
-filetype plugin indent on
+" filetype plugin indent on
