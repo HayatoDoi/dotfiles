@@ -29,6 +29,7 @@ set shiftwidth=4
 
 " タブをタブとして扱う
 set noexpandtab
+" set expandtab
 
 " カッコを強調
 set showmatch
