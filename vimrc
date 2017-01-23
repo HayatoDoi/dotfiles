@@ -6,10 +6,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2017/1/1/
+" Last Update        : 2017/1/23
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : dein.vimに移行
+" Update information : ユーザー名を環境によって変更できるように(~にした)
 " Copyright (c) 2015-2017, Hayato Doi
 
 " 行番号のの表示
@@ -83,7 +83,7 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/server/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
 call dein#load_state('~/.config/nvim/dein')
