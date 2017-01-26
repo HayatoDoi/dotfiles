@@ -11,6 +11,14 @@
 " Outline            : vimの設定ファイル
 " Update information : ユーザー名を環境によって変更できるように(~にした)
 " Copyright (c) 2015-2017, Hayato Doi
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+map <2-MiddleMouse> <Nop>
+imap <2-MiddleMouse> <Nop>
+map <3-MiddleMouse> <Nop>
+imap <3-MiddleMouse> <Nop>
+map <4-MiddleMouse> <Nop>
+imap <4-MiddleMouse> <Nop>
 
 " 行番号のの表示
 set number

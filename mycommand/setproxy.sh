@@ -31,9 +31,10 @@ function setproxy(){
 	local ManualText=`cat <<- EOS
 		使用法: ${ProgramName} [モード] [オプション]
 		[モード]
-		${tab}All       すべてのプロキシをセットする。
+		${tab}all       すべてのプロキシをセットする。
 		${tab}env       環境変数のプロキシをセットする。
 		${tab}git       gitのプロキシをセットする。
+		${tab}npm       npmのプロキシをセットする。(うまいこと動かない)
 		[オプション]
 		${tab}on        プロキシをセットする。
 		${tab}off       プロキシのセットを無効化する。

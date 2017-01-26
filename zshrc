@@ -99,3 +99,4 @@ alias cp='cp -b'
 alias mv='mv -b'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source ~/.rc/mycommand/setproxy.sh
