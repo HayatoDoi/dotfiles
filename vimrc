@@ -6,19 +6,11 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2017/1/23
+" Last Update        : 2017/1/27
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : ユーザー名を環境によって変更できるように(~にした)
+" Update information : 中ボタンでスクロールするときペーストになるのを禁止！！
 " Copyright (c) 2015-2017, Hayato Doi
-map <MiddleMouse> <Nop>
-imap <MiddleMouse> <Nop>
-map <2-MiddleMouse> <Nop>
-imap <2-MiddleMouse> <Nop>
-map <3-MiddleMouse> <Nop>
-imap <3-MiddleMouse> <Nop>
-map <4-MiddleMouse> <Nop>
-imap <4-MiddleMouse> <Nop>
 
 " 行番号のの表示
 set number
@@ -84,6 +76,16 @@ nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
+
+" neovim使用中に中ボタンでペーストするのを禁止
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+map <2-MiddleMouse> <Nop>
+imap <2-MiddleMouse> <Nop>
+map <3-MiddleMouse> <Nop>
+imap <3-MiddleMouse> <Nop>
+map <4-MiddleMouse> <Nop>
+imap <4-MiddleMouse> <Nop>
 
 "dein Scripts-----------------------------
 if &compatible
