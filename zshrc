@@ -5,16 +5,16 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2016/12/14
+# Last Update        : 2017/2/7
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Update information : git branchの表示(デザインの変更)
-# Copyright (c) 2015-2016, Hayato Doi
+# Copyright (c) 2015-2017, Hayato Doi
 
 # 環境変数LANGの設定
 export LANG=ja_JP.UTF-8
 export XDG_CONFIG_HOME=${HOME}/.config
 export GOPATH=${HOME}/.go
+export NODE_PATH=$(npm root -g)
 # 補完機能設定
 autoload -U compinit
 compinit
