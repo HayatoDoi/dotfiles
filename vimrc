@@ -65,6 +65,9 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " 色の設定を変更
 set laststatus=2
 
+" 拡張子によるシンタックスの変更
+au BufRead,BufNewFile,BufReadPre *.jade set filetype=pug 
+
 " クリップボードを共有する
 set clipboard=unnamedplus
 
@@ -111,6 +114,7 @@ call dein#add('tomtom/tcomment_vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('itchyny/lightline.vim')
 call dein#add('fatih/vim-go')
+call dein#add('digitaltoad/vim-pug')
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
