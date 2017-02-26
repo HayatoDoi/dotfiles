@@ -1,11 +1,11 @@
-# rc
-rc系の設定ファイル。
-自分で管理するだけのレポジトリ。
-使いたい方はご自由に。
+# rc  
+rc系の設定ファイル  
+自分で管理するだけのレポジトリ  
+使いたい方はご自由に  
 
-### memo
-#### Setting when Neovim & git & zsh & tmux is installed 
-#### install
+### memo  
+#### Setting when Neovim & git & zsh & tmux is installed  
+#### install  
 curl https://raw.githubusercontent.com/nikaidoumari/rc/master/installrc.sh | sh  
 
 #### uninstall

@@ -6,10 +6,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2017/1/27
+" Last Update        : 2017/2/26
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : 中ボタンでスクロールするときペーストになるのを禁止！！
+" Update information : Markdownのときのシンタックスを変更
 " Copyright (c) 2015-2017, Hayato Doi
 
 " 行番号のの表示
@@ -22,10 +22,10 @@ set hlsearch
 set cindent
 
 " タブの幅（表示）
-set tabstop=4
+set tabstop=2
 
 " タブの幅（挿入）
-set shiftwidth=4
+set shiftwidth=2
 
 " タブをタブとして扱う
 set noexpandtab
@@ -40,23 +40,20 @@ syntax on
 " 行番号の色
 hi LineNr ctermfg=white
 
-" escをCtrl+jに変更
-imap <C-j> <esc>
-
 " 表示するファイルのタイプを環境変数から取ってくる
 filetype on
 
 " カーソル行のハイライト
 set cursorline
 
-" タブの表示
+" 不可視文字の表示
 set list
 set listchars=tab:»-
 
 " タブの色
 hi SpecialKey ctermfg=241 ctermbg=NONE
 
-" ヤンクする最大行のを1000にする。
+" ヤンクする最大行のを1000にする.
 set viminfo='20,\"1000
 
 " Ctrl+eでNERDTreeToggleの起動
@@ -65,14 +62,27 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " 色の設定を変更
 set laststatus=2
 
-" 拡張子によるシンタックスの変更
+" ===拡張子によるシンタックスの変更===
+" [jade] シンタックスをつける.
 au BufRead,BufNewFile,BufReadPre *.jade set filetype=pug 
+" [md] 改行のスペースをビンク色で表示
+au BufNewFile,BufRead *.md set listchars=tab:»-,trail:_
+au BufNewFile,BufRead *.md hi SpecialKey ctermfg=199 ctermbg=NONE
 
 " クリップボードを共有する
 set clipboard=unnamedplus
 
-" lightlineのテーマをwombatにする。
+" lightlineのテーマをwombatにする.
 let g:lightline = {'colorscheme':'wombat'}
+
+" ==キーの変更==
+" 誤字用
+:command Wq wq
+:command WQ wq
+:command W w
+
+" escをCtrl+jに変更
+imap <C-j> <esc>
 
 "キーのショートカット
 nnoremap sj <C-w>j
@@ -109,12 +119,18 @@ call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 " Add or remove your plugins here:
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-
+" コメントを一括でつけてくれる
 call dein#add('tomtom/tcomment_vim')
+" ディレクトリツリーを表示するやつ
 call dein#add('scrooloose/nerdtree')
+" 左下にいい感じの色をつけてくれる
 call dein#add('itchyny/lightline.vim')
+" go用の拡張
 call dein#add('fatih/vim-go')
+" jade用の拡張
 call dein#add('digitaltoad/vim-pug')
+" インデントの可視化
+call dein#add('nathanaelkane/vim-indent-guides')
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
