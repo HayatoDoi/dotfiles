@@ -93,6 +93,7 @@ alias la='ls -la --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Infor
 alias ll='ls -l --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
 alias sudo='sudo -E'
 alias vim='nvim'
+alias ns='npm start'
 #backupの作成
 alias rm='mv -b -t /var/tmp/trash'
 alias cp='cp -b'
