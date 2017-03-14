@@ -6,10 +6,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2017/2/26
+" Last Update        : 2017/3/14
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : Markdownのときのシンタックスを変更
+" Update information : JavaScriptのsyntaxを変更, 補完機能の強化
 " Copyright (c) 2015-2017, Hayato Doi
 
 " 行番号のの表示
@@ -74,6 +74,8 @@ set clipboard=unnamedplus
 
 " lightlineのテーマをwombatにする.
 let g:lightline = {'colorscheme':'wombat'}
+" deopleteを使用する
+let g:deoplete#enable_at_startup = 1
 
 " ==キーの変更==
 " 誤字用
@@ -100,6 +102,7 @@ imap <3-MiddleMouse> <Nop>
 map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -117,8 +120,8 @@ call dein#begin('~/.config/nvim/dein')
 call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
+" call dein#add('Shougo/neosnippet.vim')
+" call dein#add('Shougo/neosnippet-snippets')
 " コメントを一括でつけてくれる
 call dein#add('tomtom/tcomment_vim')
 " ディレクトリツリーを表示するやつ
@@ -129,10 +132,14 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('fatih/vim-go')
 " jade用の拡張
 call dein#add('digitaltoad/vim-pug')
+" ES6 syntax
+call dein#add('othree/yajs.vim', {'autoload':{'filetypes':['javascript']}})
+" 補完
+call dein#add('Shougo/deoplete.nvim')
 " インデントの可視化
-call dein#add('nathanaelkane/vim-indent-guides')
+" call dein#add('nathanaelkane/vim-indent-guides')
 " You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+" call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 " Required:
 call dein#end()
