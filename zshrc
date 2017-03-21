@@ -15,6 +15,9 @@ export LANG=ja_JP.UTF-8
 export XDG_CONFIG_HOME=${HOME}/.config
 export GOPATH=${HOME}/.go
 export NODE_PATH=$(npm root -g)
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
 # 補完機能設定
 autoload -U compinit
 compinit

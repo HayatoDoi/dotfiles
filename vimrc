@@ -84,6 +84,7 @@ let g:deoplete#enable_at_startup = 1
 :command Wq wq
 :command WQ wq
 :command W w
+:command Q q
 
 " escをCtrl+jに変更
 imap <C-j> <esc>
