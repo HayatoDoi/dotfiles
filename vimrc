@@ -18,9 +18,6 @@ set number
 " 検索語句のハイライト
 set hlsearch
 
-" C言語スタイルのインデントを自動でいれる
-set cindent
-
 " タブの幅（表示）
 set tabstop=2
 
@@ -33,9 +30,6 @@ set noexpandtab
 
 " カッコを強調
 set showmatch
-
-" 色を付ける
-syntax on
 
 " 行番号の色
 hi LineNr ctermfg=white
@@ -65,9 +59,17 @@ set laststatus=2
 " ===拡張子によるシンタックスの変更===
 " [jade] シンタックスをつける.
 au BufRead,BufNewFile,BufReadPre *.jade set filetype=pug 
-" [md] 改行のスペースをビンク色で表示
+" [md]
+" 改行のスペースをビンク色で表示
 au BufNewFile,BufRead *.md set listchars=tab:»-,trail:_
 au BufNewFile,BufRead *.md hi SpecialKey ctermfg=199 ctermbg=NONE
+" タブをスペースで.
+au BufNewFile,BufRead *.md set tabstop=4
+au BufNewFile,BufRead *.md set shiftwidth=4
+au BufNewFile,BufRead *.md set expandtab
+" [c]
+" C言語スタイルのインデントを自動でいれる
+au BufNewFile,BufRead *.c set cindent
 
 " クリップボードを共有する
 set clipboard=unnamedplus
@@ -102,7 +104,6 @@ imap <3-MiddleMouse> <Nop>
 map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
-
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -136,6 +137,9 @@ call dein#add('digitaltoad/vim-pug')
 call dein#add('othree/yajs.vim', {'autoload':{'filetypes':['javascript']}})
 " 補完
 call dein#add('Shougo/deoplete.nvim')
+" npm install -g tern"
+call dein#add('carlitux/deoplete-ternjs')
+
 " インデントの可視化
 " call dein#add('nathanaelkane/vim-indent-guides')
 " You can specify revision/branch/tag.
@@ -147,6 +151,7 @@ call dein#save_state()
 
 " Required:
 filetype plugin indent on
+" 色を付ける
 syntax enable
 " If you want to install not installed plugins on startup.
 if dein#check_install()
