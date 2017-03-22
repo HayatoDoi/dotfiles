@@ -105,7 +105,15 @@ imap <3-MiddleMouse> <Nop>
 map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
-"dein Scripts-----------------------------
+" vim 起動時にtmuxのステータスバーを非表示
+if !has('gui_running') && $TMUX !=# ''
+	augroup Tmux
+		autocmd!
+		autocmd VimEnter,VimLeave * silent !tmux set status
+	augroup END
+endif
+
+" dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
