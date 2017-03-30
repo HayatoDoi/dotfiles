@@ -27,10 +27,16 @@ if [ ! -e /var/tmp/trash ];then
 	mkdir /var/tmp/trash
 fi
 
-if [ ! -e ${HOME}/.config/nvim/ ];then
+if [ ! -e ${HOME}/.config/nvim ];then
 	echo "\"${HOME}/.config/nvim/\" is not found"
 	echo "make \"${HOME}/.config/nvim/\" folder"
 	mkdir ${HOME}/.config/nvim/
+fi
+
+if [ ! -e ${HOME}/.config/each ];then
+	echo "\"${HOME}/.config/each\" is not found"
+	echo "make \"${HOME}/.config/each\" folder"
+	mkdir ${HOME}/.config/each
 fi
 
 # download rc files.
@@ -49,3 +55,5 @@ git clone https://github.com/riywo/anyenv ~/.anyenv
 mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
+# make file
+touch ~/.config/each/my.sh
