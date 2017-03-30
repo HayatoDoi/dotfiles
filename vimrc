@@ -87,7 +87,7 @@ let g:deoplete#enable_at_startup = 1
 :command Q q
 
 " escをCtrl+jに変更
-imap <C-j> <esc>
+imap <C-[> <esc>
 
 "キーのショートカット
 nnoremap sj <C-w>j
@@ -112,6 +112,12 @@ if !has('gui_running') && $TMUX !=# ''
 		autocmd VimEnter,VimLeave * silent !tmux set status
 	augroup END
 endif
+
+" ノーマルモードになる時にfcitxを無効化
+function! ImInActivate()
+  call system('fcitx-remote -c')
+endfunction
+inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 
 " dein Scripts-----------------------------
 if &compatible
