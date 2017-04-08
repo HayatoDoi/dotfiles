@@ -6,10 +6,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2017/3/14
+" Last Update        : 2017/4/9
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : JavaScriptのsyntaxを変更, 補完機能の強化
+" Update information : VimShellを導入
 " Copyright (c) 2015-2017, Hayato Doi
 
 " 行番号のの表示
@@ -90,10 +90,16 @@ let g:deoplete#enable_at_startup = 1
 imap <C-[> <esc>
 
 "キーのショートカット
+nnoremap s <Nop>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap <silent> vs :VimShell<CR>
+nnoremap <silent> vss :VimShellSendString<CR>
+nnoremap <silent> vip :VimShellInteractive ipython<CR>
 
 " neovim使用中に中ボタンでペーストするのを禁止
 map <MiddleMouse> <Nop>
