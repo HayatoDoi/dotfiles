@@ -103,6 +103,7 @@ alias cp='cp -b'
 alias mv='mv -b'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.bin"
 # 各環境用のファイル
 source ~/.config/each/my.sh
 

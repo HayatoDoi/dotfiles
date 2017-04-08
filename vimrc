@@ -154,6 +154,9 @@ call dein#add('othree/yajs.vim', {'autoload':{'filetypes':['javascript']}})
 call dein#add('Shougo/deoplete.nvim')
 " npm install -g tern"
 call dein#add('carlitux/deoplete-ternjs')
+" Vimshell
+call dein#add('Shougo/vimshell.vim')
+call dein#add('Shougo/vimproc', {'build' : 'make'})
 
 " インデントの可視化
 " call dein#add('nathanaelkane/vim-indent-guides')
