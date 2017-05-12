@@ -70,8 +70,8 @@ au BufNewFile,BufRead *.md set expandtab
 au BufNewFile,BufRead *.c set cindent
 " [php]
 " PSR-2 coding standardにする.
-au BufNewFile,BufRead *.php set tabstop=2
-au BufNewFile,BufRead *.php set shiftwidth=2
+au BufNewFile,BufRead *.php set tabstop=4
+au BufNewFile,BufRead *.php set shiftwidth=4
 au BufNewFile,BufRead *.php set expandtab
 
 " クリップボードを共有する
