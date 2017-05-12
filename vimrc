@@ -1,15 +1,13 @@
 " =====================================================
-" testtest
 " This program is for the Japanese.
 " Therefore, comments are written in Japanese.
 " All will be understood by reading the source code.
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2017/4/9
+" Last Update        : 2017/5/12
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Update information : VimShellを導入
 " Copyright (c) 2015-2017, Hayato Doi
 
 " 行番号のの表示
@@ -70,6 +68,11 @@ au BufNewFile,BufRead *.md set expandtab
 " [c]
 " C言語スタイルのインデントを自動でいれる
 au BufNewFile,BufRead *.c set cindent
+" [php]
+" PSR-2 coding standardにする.
+au BufNewFile,BufRead *.php set tabstop=2
+au BufNewFile,BufRead *.php set shiftwidth=2
+au BufNewFile,BufRead *.php set expandtab
 
 " クリップボードを共有する
 set clipboard=unnamedplus
