@@ -17,10 +17,10 @@ set number
 set hlsearch
 
 " タブの幅（表示）
-set tabstop=2
+set tabstop=4
 
 " タブの幅（挿入）
-set shiftwidth=2
+set shiftwidth=4
 
 " タブをタブとして扱う
 set noexpandtab
@@ -73,6 +73,11 @@ au BufNewFile,BufRead *.c set cindent
 au BufNewFile,BufRead *.php set tabstop=4
 au BufNewFile,BufRead *.php set shiftwidth=4
 au BufNewFile,BufRead *.php set expandtab
+" [Python]
+" インデントはスペース2
+au BufNewFile,BufRead *.py set tabstop=2
+au BufNewFile,BufRead *.py set shiftwidth=2
+au BufNewFile,BufRead *.py set expandtab
 
 " クリップボードを共有する
 set clipboard=unnamedplus
