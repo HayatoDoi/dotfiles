@@ -5,7 +5,7 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2017/2/7
+# Last Update        : 2017/5/30
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
 # Copyright (c) 2015-2017, Hayato Doi
@@ -31,26 +31,24 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '%b'
 zstyle ':vcs_info:*' actionformats '%b|%a'
 # zshが更新されるたびに呼ばれる部分
-precmd() {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+precmd(){
+	psvar=()
+	LANG=en_US.UTF-8 vcs_info
+	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-# RPROMPT="%1(v|%F{green}%1v%f|)"
-
 # プロンプトを2行で表示、時刻を表示
-RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}[%1(v|%1v|-----)]%f""(%*)"" %~""
+RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}[%1(v|%1v|-----)]%f"" %~""
 %B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
 RootPrompt2="%B%F{yellow}>>>%f%b "
 
-OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{blue}[%1(v|%1v|-----)]%f""(%*)"" %~""
+OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{blue}[%1(v|%1v|-----)]%f"" %~""
 %B%F{green}>%f%F{cyan}>%f%F{blue}>%f%b "
 OtherPrompt2="%B%F{blue}>>>%f%b "
 # root,非rootでコマンドの色を変える
 case ${UID} in
-	0)	
+	0)
 		PROMPT=$RootPrompt
 		PROMPT2=$RootPrompt2
 		unset RPROMPT
@@ -94,8 +92,8 @@ alias lst='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Inf
 alias l='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
 alias la='ls -la --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
 alias ll='ls -l --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias sudo='sudo -E'
 alias vim='nvim'
+alias vi='nvim'
 alias ns='npm start'
 #backupの作成
 alias rm='mv -b -t /var/tmp/trash'
@@ -109,4 +107,6 @@ source ~/.config/each/my.sh
 
 export NVM_DIR="/home/nono/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# ビルドインコマンド
 

@@ -43,7 +43,7 @@ set list
 set listchars=tab:»-
 
 " タブの色
-hi SpecialKey ctermfg=241 ctermbg=NONE
+" hi SpecialKey ctermfg=241 ctermbg=NONE
 
 " ヤンクする最大行のを1000にする.
 set viminfo='20,\"1000
@@ -121,10 +121,10 @@ imap <4-MiddleMouse> <Nop>
 
 " vim 起動時にtmuxのステータスバーを非表示
 if !has('gui_running') && $TMUX !=# ''
-	augroup Tmux
-		autocmd!
-		autocmd VimEnter,VimLeave * silent !tmux set status
-	augroup END
+  augroup Tmux
+    autocmd!
+    autocmd VimEnter,VimLeave * silent !tmux set status
+  augroup END
 endif
 
 " ノーマルモードになる時にfcitxを無効化
@@ -187,7 +187,7 @@ filetype plugin indent on
 syntax enable
 " If you want to install not installed plugins on startup.
 if dein#check_install()
-	call dein#install()
+  call dein#install()
 endif
 
 "End dein Scripts-------------------------
