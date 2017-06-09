@@ -1,9 +1,9 @@
 #!/bin/sh
-# File name          : installrc.sh
+# File name          : installdotfiles.sh
 # Author             : Hayato Doi
-# Last Update        : 2017/1/1
+# Last Update        : 2017/6/9
 # Since              : 2017/1/1
-# Outline            : rc file 系を自動でインストールしておくやつ。
+# Outline            : dotfiles系を自動でインストールしておくやつ。
 # Update information : 
 # Copyright (c) 2017, Hayato Doi
 
@@ -39,15 +39,15 @@ if [ ! -e ${HOME}/.config/each ];then
 	mkdir ${HOME}/.config/each
 fi
 
-# download rc files.
-git clone https://github.com/nikaidoumari/rc.git ${HOME}/.rc
-ln -s ${HOME}/.rc/zshrc ${HOME}/.zshrc
-ln -s ${HOME}/.rc/tmux.conf ${HOME}/.tmux.conf
-ln -s ${HOME}/.rc/vimrc ${HOME}/.config/nvim/init.vim
+# download dotfiles files.
+git clone https://github.com/nikaidoumari/dotfiles.git ${HOME}/.dotfiles
+ln -s ${HOME}/.dotfiles/zshrc ${HOME}/.zshrc
+ln -s ${HOME}/.dotfiles/tmux.conf ${HOME}/.tmux.conf
+ln -s ${HOME}/.dotfiles/vimrc ${HOME}/.config/nvim/init.vim
 
 git clone https://github.com/Shougo/dein.vim.git ${HOME}/.config/nvim/dein/repos/github.com/Shougo/dein.vim
-# wget nononono.net/.zshrc.php -O ${HOME}/.zshrc
-# wget nononono.net/.vimrc.php -O ${HOME}/.config/nvim/init.vim
+# wget nononono.net/.zshdotfiles.php -O ${HOME}/.zshdotfiles
+# wget nononono.net/.vimdotfiles.php -O ${HOME}/.config/nvim/init.vim
 # wget nononono.net/.tmux.conf.php -O ${HOME}/.tmux.conf
 
 # setup
