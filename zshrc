@@ -5,19 +5,19 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2017/5/30
+# Last Update        : 2018/3/3
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Copyright (c) 2015-2017, Hayato Doi
+# Copyright (c) 2015-2018, Hayato Doi
+
+source ~/.dotfiles/env/*
+source ~/.dotfiles/buildin_cmd/*
+export PATH=$PATH:~/.dotfiles/cmd
 
 # 環境変数LANGの設定
 export LANG=ja_JP.UTF-8
 export XDG_CONFIG_HOME=${HOME}/.config
-export GOPATH=${HOME}/.go
-export NODE_PATH=$(npm root -g)
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+
 # 補完機能設定
 autoload -U compinit
 compinit
@@ -100,13 +100,4 @@ alias rm='mv -b -t /var/tmp/trash'
 alias cp='cp -b'
 alias mv='mv -b'
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.bin"
-# 各環境用のファイル
-source ~/.config/each/my.sh
-
-export NVM_DIR="/home/nono/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# ビルドインコマンド
-
+neofetch
