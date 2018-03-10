@@ -85,7 +85,7 @@ set clipboard=unnamedplus
 " lightlineのテーマをwombatにする.
 let g:lightline = {'colorscheme':'wombat'}
 " deopleteを使用する
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 " ==キーの変更==
 " 誤字用
