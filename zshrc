@@ -5,18 +5,19 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2018/3/3
+# Last Update        : 2018/11/23
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
 # Copyright (c) 2015-2018, Hayato Doi
 
-source ~/.dotfiles/env/*
+for f in `ls ~/.dotfiles/env/*.zsh`;do
+	source $f
+done
 source ~/.dotfiles/buildin_cmd/*
 export PATH=$PATH:~/.dotfiles/cmd
 
 # 環境変数LANGの設定
 export LANG=ja_JP.UTF-8
-export XDG_CONFIG_HOME=${HOME}/.config
 
 # 補完機能設定
 autoload -U compinit
@@ -100,4 +101,3 @@ alias rm='mv -b -t /var/tmp/trash'
 alias cp='cp -b'
 alias mv='mv -b'
 
-neofetch
