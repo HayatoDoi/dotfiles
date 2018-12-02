@@ -5,10 +5,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2017/5/12
+" Last Update        : 2018/12/2
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Copyright (c) 2015-2017, Hayato Doi
+" Copyright (c) 2015-2018, Hayato Doi
 
 " 行番号のの表示
 set number
@@ -95,7 +95,7 @@ let g:lightline = {'colorscheme':'wombat'}
 :command Q q
 
 " escをCtrl+jに変更
-imap <C-[> <esc>
+imap <C-j> <esc>
 
 "キーのショートカット
 nnoremap s <Nop>
@@ -133,62 +133,42 @@ function! ImInActivate()
 endfunction
 inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 
-" dein Scripts-----------------------------
+"dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
 " Required:
-set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#load_state('~/.config/nvim/dein')
-call dein#begin('~/.config/nvim/dein')
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-" Let dein manage dein
-" Required:
-call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-" Add or remove your plugins here:
-" call dein#add('Shougo/neosnippet.vim')
-" call dein#add('Shougo/neosnippet-snippets')
-" コメントを一括でつけてくれる
-call dein#add('tomtom/tcomment_vim')
-" ディレクトリツリーを表示するやつ
-call dein#add('scrooloose/nerdtree')
-" 左下にいい感じの色をつけてくれる
-call dein#add('itchyny/lightline.vim')
-" go用の拡張
-call dein#add('fatih/vim-go')
-" jade用の拡張
-call dein#add('digitaltoad/vim-pug')
-" ES6 syntax
-call dein#add('othree/yajs.vim', {'autoload':{'filetypes':['javascript']}})
-" 補完
-call dein#add('Shougo/deoplete.nvim')
-" npm install -g tern"
-call dein#add('carlitux/deoplete-ternjs')
-" Vimshell
-call dein#add('Shougo/vimshell.vim')
-call dein#add('Shougo/vimproc', {'build' : 'make'})
+  " Add or remove your plugins here like this:
+  " コメントを一括でつけてくれる
+  call dein#add('tomtom/tcomment_vim')
+  " ディレクトリツリーを表示するやつ
+  call dein#add('scrooloose/nerdtree')
+  " 左下にいい感じの色をつけてくれる
+  call dein#add('itchyny/lightline.vim')
 
-" インデントの可視化
-" call dein#add('nathanaelkane/vim-indent-guides')
-" You can specify revision/branch/tag.
-" call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
-" Required:
-call dein#end()
-call dein#save_state()
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
 " Required:
 filetype plugin indent on
-" 色を付ける
 syntax enable
+
 " If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
+"if dein#check_install()
+"  call dein#install()
+"endif
 
 "End dein Scripts-------------------------
-
