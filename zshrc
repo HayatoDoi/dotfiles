@@ -5,10 +5,10 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2018/11/23
+# Last Update        : 2019/1/10
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
-# Copyright (c) 2015-2018, Hayato Doi
+# Copyright (c) 2015-2019, Hayato Doi
 
 for f in `ls ~/.dotfiles/env/*.zsh`;do
 	source $f
@@ -60,6 +60,23 @@ case ${UID} in
 		unset RPROMPT
 		;;
 esac
+# viinsキーバインド使用時, INSERTモードとNORMALモードでカーソルの色を変える
+# xterm依存かもしれない.
+function zle-line-init zle-keymap-select {
+	case $KEYMAP in
+		vicmd)
+			echo -ne '\e]12;#009900\a'
+			;;
+		main|viins)
+			echo -ne '\e]12;#FFFFFF\a'
+			;;
+	esac
+	# zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+# viinsモードでバックスペースを使う
+bindkey -v '^?' backward-delete-char
 
 # 履歴の設定
 HISTFILE=~/.zsh_history
@@ -69,7 +86,7 @@ setopt hist_ignore_dups
 setopt share_history
 
 # viキーバインド設定
-# bindkey -v
+bindkey -v
 
 # ls 等の色設定
 export LS_COLORS='di=36;01:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
