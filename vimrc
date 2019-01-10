@@ -5,10 +5,10 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2018/12/2
+" Last Update        : 2019/1/11
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Copyright (c) 2015-2018, Hayato Doi
+" Copyright (c) 2015-2019, Hayato Doi
 
 " 行番号のの表示
 set number
@@ -132,6 +132,12 @@ function! ImInActivate()
   call system('fcitx-remote -c')
 endfunction
 inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
+
+" 前回終了時のカーソル位置でファイルを開く
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
 
 "dein Scripts-----------------------------
 if &compatible
