@@ -105,6 +105,11 @@ nnoremap sl <C-w>l
 nnoremap sh <C-w>h
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
+"表示行で移動する
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk<Paste>
 
 " neovim使用中に中ボタンでペーストするのを禁止
 map <MiddleMouse> <Nop>
