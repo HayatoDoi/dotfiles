@@ -105,9 +105,6 @@ nnoremap sl <C-w>l
 nnoremap sh <C-w>h
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
-nnoremap <silent> vs :VimShell<CR>
-nnoremap <silent> vss :VimShellSendString<CR>
-nnoremap <silent> vip :VimShellInteractive ipython<CR>
 
 " neovim使用中に中ボタンでペーストするのを禁止
 map <MiddleMouse> <Nop>
