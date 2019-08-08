@@ -5,7 +5,7 @@
 # =====================================================
 # File name          : .zshrc
 # Author             : Hayato Doi
-# Last Update        : 2019/1/10
+# Last Update        : 2019/8/8
 # Since              : 2015/7/14
 # Outline            : zshの設定ファイル
 # Copyright (c) 2015-2019, Hayato Doi
@@ -105,11 +105,17 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # エイリアス
 alias grep='grep --colour=auto'
-alias ls='ls --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias lst='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias l='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias la='ls -la --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias ll='ls -l --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
+
+ls_color_opt='-G'
+if [[ ${OSTYPE} =~ "linux*" ]]; then
+	ls_color_opt='--color=auto'
+fi
+alias ls='ls '$ls_color_opt
+alias lst='ls -ltr '$ls_color_opt
+alias l='ls -ltr '$ls_color_opt
+alias la='ls -la '$ls_color_opt
+alias ll='ls -l '$ls_color_opt
+
 alias vim='nvim'
 alias vi='nvim'
 alias ns='npm start'
