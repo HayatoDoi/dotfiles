@@ -38,6 +38,9 @@ filetype on
 " カーソル行のハイライト
 set cursorline
 
+" マウスを使えるようにする
+set mouse=a
+
 " 不可視文字の表示
 set list
 set listchars=tab:»-
