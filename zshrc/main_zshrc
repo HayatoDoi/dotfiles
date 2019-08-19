@@ -26,7 +26,8 @@ esac
 
 
 # 細かい環境の設定ファイルを読み込む
-for f in `ls ~/.dotfiles/zshrc/env/*.zsh`;do
+for f in `ls ~/.dotfiles/zshrc/env/*.zsh &&
+		ls -a ~/.dotfiles/zshrc/ignore_env/*.zsh`;do
 	source $f
 done
 
