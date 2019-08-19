@@ -10,11 +10,29 @@
 # Outline            : zshの設定ファイル
 # Copyright (c) 2015-2019, Hayato Doi
 
-for f in `ls ~/.dotfiles/env/*.zsh`;do
+if [[ ${OSTYPE} =~ "linux*" ]]; then
+	ls_color_opt='--color=auto'
+fi
+
+# OSごとの設定を詠みこむ
+case ${OSTYPE} in
+	darwin*)
+		source ~/.dotfiles/zshrc/macos_zshrc.zsh
+		;;
+	linux*)
+		source ~/.dotfiles/zshrc/linux_zshrc.zsh
+		;;
+esac
+
+
+# 細かい環境の設定ファイルを読み込む
+for f in `ls ~/.dotfiles/zshrc/env/*.zsh`;do
 	source $f
 done
-source ~/.dotfiles/buildin_cmd/*
-export PATH=$PATH:~/.dotfiles/cmd
+
+source ~/.dotfiles/zshrc/buildin_cmd/*
+
+export PATH=$PATH:~/.dotfiles/zshrc/cmd
 
 # 環境変数LANGの設定
 export LANG=ja_JP.UTF-8
@@ -106,21 +124,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # エイリアス
 alias grep='grep --colour=auto'
 
-ls_color_opt='-G'
-if [[ ${OSTYPE} =~ "linux*" ]]; then
-	ls_color_opt='--color=auto'
-fi
-alias ls='ls '$ls_color_opt
-alias lst='ls -ltr '$ls_color_opt
-alias l='ls -ltr '$ls_color_opt
-alias la='ls -la '$ls_color_opt
-alias ll='ls -l '$ls_color_opt
+alias ls='ls '$LS_COLOR_OPT
+alias lst='ls -ltr '$LS_COLOR_OPT
+alias l='ls -ltr '$LS_COLOR_OPT
+alias la='ls -la '$LS_COLOR_OPT
+alias ll='ls -l '$LS_COLOR_OPT
 
 alias vim='nvim'
 alias vi='nvim'
 alias ns='npm start'
-#backupの作成
-alias rm='mv -b -t /var/tmp/trash'
-alias cp='cp -b'
-alias mv='mv -b'
 

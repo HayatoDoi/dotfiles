@@ -1,0 +1,2 @@
+zshrc/ignore_env
+!zshrc/ignore_env/.gitkeep
