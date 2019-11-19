@@ -48,25 +48,27 @@ precmd(){
 
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
 # プロンプトを2行で表示、時刻を表示
-RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@""%F{yellow}[%1(v|%1v|-----)]%f"" %~""
+RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@%m""%F{yellow}[%1(v|%1v|-----)]%f"" %~""
 %B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
 RootPrompt2="%B%F{yellow}>>>%f%b "
+RootRprompt="%D"
 
-OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@""%F{cyan}[%1(v|%1v|-----)]%f"" %~""
+OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@%m""%F{cyan}[%1(v|%1v|-----)]%f"" %~""
 %B%F{green}>%f%F{cyan}>%f%F{blue}>%f%b "
 OtherPrompt2="%B%F{blue}>>>%f%b "
+OtherRprompt="%D{%y-%m-%d %H:%M:%S}"
 
 # root,非rootでコマンドの色を変える
 case ${UID} in
 	0)
 		PROMPT=$RootPrompt
 		PROMPT2=$RootPrompt2
-		unset RPROMPT
+		RPROMPT=$RootRprompt
 		;;
 	*)
 		PROMPT=$OtherPrompt
 		PROMPT2=$OtherPrompt2
-		unset RPROMPT
+		RPROMPT=$OtherRprompt
 		;;
 esac
 # viinsキーバインド使用時, INSERTモードとNORMALモードでカーソルの色を変える
