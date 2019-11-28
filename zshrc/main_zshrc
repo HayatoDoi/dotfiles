@@ -10,20 +10,15 @@
 # Outline            : zshの設定ファイル
 # Copyright (c) 2015-2019, Hayato Doi
 
-if [[ ${OSTYPE} =~ "linux*" ]]; then
-	ls_color_opt='--color=auto'
-fi
-
 # OSごとの設定を詠みこむ
 case ${OSTYPE} in
 	darwin*) #mac/bsd
-		source ~/.dotfiles/zshrc/macos_zshrc.zsh
+		source ~/.dotfiles/zshrc/os/macos_zshrc.zsh
 		;;
 	linux*)  #linux
-		source ~/.dotfiles/zshrc/linux_zshrc.zsh
+		source ~/.dotfiles/zshrc/os/linux_zshrc.zsh
 		;;
 esac
-
 
 # 細かい環境の設定ファイルを読み込む
 for f in `ls ~/.dotfiles/zshrc/env/*.zsh &&
