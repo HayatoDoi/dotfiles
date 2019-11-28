@@ -5,7 +5,7 @@
 " =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2019/1/11
+" Last Update        : 2019/11/04
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
 " Copyright (c) 2015-2019, Hayato Doi
@@ -124,6 +124,12 @@ imap <3-MiddleMouse> <Nop>
 map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
+" Gtagsのキーバインド設定
+map <C-h> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
+
 " vim 起動時にtmuxのステータスバーを非表示
 if !has('gui_running') && $TMUX !=# ''
   augroup Tmux
@@ -167,7 +173,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('scrooloose/nerdtree')
   " 左下にいい感じの色をつけてくれる
   call dein#add('itchyny/lightline.vim')
-
+  " gtags用のプログイン
+  call dein#add('vim-scripts/gtags.vim')
   " Required:
   call dein#end()
   call dein#save_state()
