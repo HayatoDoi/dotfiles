@@ -1,0 +1,9 @@
+# .screenrc file
+#
+# ctrl+t -> esc ->カーソルキーで自由に移動
+# ctrl+t -> : -> hardcopy -h <filename>で履歴を保存
+escape ^Tt
+termcapinfo linux ti@:te@
+termcapinfo xterm ti@:te@
+termcapinfo xterm-color ti@:te@
+defscrollback 102400
