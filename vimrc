@@ -51,6 +51,11 @@ set listchars=tab:»-
 " ヤンクする最大行のを1000にする.
 set viminfo='20,\"1000
 
+" 80文字で自動的に折り返す
+" テキストを選択してgq
+" set formatoptions+=mM
+set textwidth=80
+
 " Ctrl+eでNERDTreeToggleの起動
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
@@ -71,6 +76,9 @@ au BufNewFile,BufRead *.md set expandtab
 " [c]
 " C言語スタイルのインデントを自動でいれる
 au BufNewFile,BufRead *.c set cindent
+au BufNewFile,BufRead *.c set noexpandtab
+au BufNewFile,BufRead *.c set tabstop=8
+au BufNewFile,BufRead *.c set shiftwidth=8
 " [php]
 " PSR-2 coding standardにする.
 au BufNewFile,BufRead *.php set tabstop=4
@@ -89,6 +97,17 @@ set clipboard=unnamedplus
 let g:lightline = {'colorscheme':'wombat'}
 " deopleteを使用する
 "let g:deoplete#enable_at_startup = 1
+
+let g:gen_tags#gtags_default_map = 1
+
+" set fileencodings=utf-8,sjis,euc-jp,latin1
+let $LANG='ja_JP.UTF-8'
+set encoding=utf-8
+set fileencodings=sjis,utf-8,iso-2022-jp,euc-jp
+
+" タグジャンプの設定
+"let TAG_JUMP = 'rtags'
+"let TAG_JUMP='gtags'
 
 " ==キーの変更==
 " 誤字用
@@ -123,20 +142,33 @@ map <3-MiddleMouse> <Nop>
 imap <3-MiddleMouse> <Nop>
 map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
+" rキーを無効化(rtagsのキーバインドを被るため)
+nnoremap r <Nop>
 
-" Gtagsのキーバインド設定
-map <C-h> :Gtags -f %<CR>
-map <C-j> :GtagsCursor<CR>
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
-
-" vim 起動時にtmuxのステータスバーを非表示
-if !has('gui_running') && $TMUX !=# ''
-  augroup Tmux
-    autocmd!
-    autocmd VimEnter,VimLeave * silent !tmux set status
-  augroup END
+" gtags キーバインド
+if $TAG_JUMP == "gtags"
+  map <C-h> :Gtags -f %<CR>
+  map <C-j> :GtagsCursor<CR>
+  map <C-n> :cn<CR>
+  map <C-p> :cp<CR>
 endif
+
+" rtags キーバインド
+if $TAG_JUMP == "rtags"
+  " <ctrl + j> = 定義へジャンプ
+  map <C-j> :call rtags#JumpTo()<CR> 
+endif
+
+let g:lsp_highlight_references_enabled = 1
+highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
+
+" " vim 起動時にtmuxのステータスバーを非表示
+" if !has('gui_running') && $TMUX !=# ''
+"   augroup Tmux
+"     autocmd!
+"     autocmd VimEnter,VimLeave * silent !tmux set status
+"   augroup END
+" endif
 
 " ノーマルモードになる時にfcitxを無効化
 function! ImInActivate()
@@ -173,8 +205,17 @@ if dein#load_state('~/.cache/dein')
   call dein#add('scrooloose/nerdtree')
   " 左下にいい感じの色をつけてくれる
   call dein#add('itchyny/lightline.vim')
-  " gtags用のプログイン
+  "" tag jump系
+  "" gtags
   call dein#add('vim-scripts/gtags.vim')
+  "" rtags
+  call dein#add('lyuts/vim-rtags')
+  "" clang
+  call dein#add('prabirshrestha/async.vim')
+  call dein#add('prabirshrestha/vim-lsp')
+  " ペーストする時にインデントを入れない
+  " call dein#add('ConradIrwin/vim-bracketed-paste')
+
   " Required:
   call dein#end()
   call dein#save_state()
@@ -188,5 +229,5 @@ syntax enable
 "if dein#check_install()
 "  call dein#install()
 "endif
-
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 "End dein Scripts-------------------------

@@ -1,2 +1,4 @@
 zshrc/ignore_env
 !zshrc/ignore_env/gitkeep.zsh
+zshrc/job_zshrc
+!zshrc/job_zshrc/gitkeep.zsh

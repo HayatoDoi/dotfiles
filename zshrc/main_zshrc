@@ -1,36 +1,57 @@
+# =====================================================
+# This program is for the Japanese.
+# Therefore, comments are written in Japanese.
+# All will be understood by reading the source code.
+# =====================================================
 # File name          : main_zshrc
 # Author             : Hayato Doi
 # Last Update        : 2020/1/29
 # Since              : 2015/7/14
-# Description        : zshの設定ファイル
-# Copyright 2015-2020, Hayato Doi
+# Outline            : zshの設定ファイル
+# Copyright (c) 2015-2020, Hayato Doi
+
+# sshから起動したとき、tmuxを起動する
+if [ -n "$SSH_CONNECTION" ] && [[ ! -n $TMUX ]]; then
+	if tmux ls; then
+		tmux -u a
+	else
+		tmux -u
+	fi
+fi
 
 # OSごとの設定を詠みこむ
+ZSHRC_DIR="${HOME}/.dotfiles/zshrc"
+
 case ${OSTYPE} in
 	darwin*) #mac
-		source ~/.dotfiles/zshrc/os/macos_zshrc.zsh
+		source $ZSHRC_DIR/macos_zshrc.zsh
 		;;
-	freebsd*) #freebsd
-		source ~/.dotfiles/zshrc/os/freebsd_zshrc.zsh
+	freebsd*) #bsd
+		source $ZSHRC_DIR/bsd_zshrc.zsh
 		;;
 	linux*)  #linux
-		source ~/.dotfiles/zshrc/os/linux_zshrc.zsh
+		source $ZSHRC_DIR/linux_zshrc.zsh
 		;;
 esac
 
 # 細かい環境の設定ファイルを読み込む
-for f in `ls ~/.dotfiles/zshrc/env/*.zsh &&
-		ls -a ~/.dotfiles/zshrc/ignore_env/*.zsh`;do
+for f in `ls -a $ZSHRC_DIR/env/*.zsh \
+		$ZSHRC_DIR/ignore_env/*.zsh \
+		$ZSHRC_DIR/job_zshrc/*.zsh \
+		$ZSHRC_DIR/buildin_cmd/*.zsh`;do
 	source $f
 done
 
 # shell用組み込みコマンドの読み込み
 source ~/.dotfiles/zshrc/buildin_cmd/*
+# local 実行ファイルpathの読み込み
+source ~/.bin/include_path.zsh
 
 # カラー設定を読み込む
-source ~/.dotfiles/zshrc/color.zsh
+source $ZSHRC_DIR/color.zsh
 
-export PATH=$PATH:~/.dotfiles/zshrc/cmd
+# 独自コマンドにpathを通す
+export PATH=$PATH:$ZSHRC_DIR/cmd
 
 # 環境変数LANGの設定
 export LANG=ja_JP.UTF-8
@@ -53,7 +74,7 @@ setopt hist_ignore_dups
 setopt share_history
 
 # viキーバインド設定
-bindkey -v
+#bindkey -v
 
 # 補完候補のカーソル選択を有効にする設定
 zstyle ':completion:*:default' menu select=1
@@ -67,11 +88,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # エイリアス
 alias grep='grep --colour=auto'
 
-alias ls='ls --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias lst='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias l='ls -ltr --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias la='ls -la --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
-alias ll='ls -l --color=auto -I '\''$RECYCLE.BIN'\'' -I '\''System Volume Information'\'
+alias ls='exa'
+alias lst='exa -ltr'
+alias l='exa -ltr'
+alias la='exa -la'
+alias ll='exa -l'
 
 alias vim='nvim'
 alias vi='nvim'

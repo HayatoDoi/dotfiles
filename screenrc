@@ -7,3 +7,9 @@ termcapinfo linux ti@:te@
 termcapinfo xterm ti@:te@
 termcapinfo xterm-color ti@:te@
 defscrollback 102400
+
+# /var/log/screen/ ‚ÉƒƒO‚ğ•Û‘¶‚·‚é
+logfile /usr/home/hayato/work/screen_log/%Y%m%d_%c%s.log
+deflog flush secs
+deflog on
+
