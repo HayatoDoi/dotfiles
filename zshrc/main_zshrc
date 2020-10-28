@@ -1,29 +1,22 @@
-# =====================================================
-# This program is for the Japanese.
-# Therefore, comments are written in Japanese.
-# All will be understood by reading the source code.
-# =====================================================
-# File name          : .zshrc
+# File name          : main_zshrc
 # Author             : Hayato Doi
-# Last Update        : 2019/8/19
+# Last Update        : 2020/1/29
 # Since              : 2015/7/14
-# Outline            : zshの設定ファイル
-# Copyright (c) 2015-2019, Hayato Doi
-
-if [[ ${OSTYPE} =~ "linux*" ]]; then
-	ls_color_opt='--color=auto'
-fi
+# Description        : zshの設定ファイル
+# Copyright 2015-2020, Hayato Doi
 
 # OSごとの設定を詠みこむ
 case ${OSTYPE} in
-	darwin*) #mac/bsd
-		source ~/.dotfiles/zshrc/macos_zshrc.zsh
+	darwin*) #mac
+		source ~/.dotfiles/zshrc/os/macos_zshrc.zsh
+		;;
+	freebsd*) #freebsd
+		source ~/.dotfiles/zshrc/os/freebsd_zshrc.zsh
 		;;
 	linux*)  #linux
-		source ~/.dotfiles/zshrc/linux_zshrc.zsh
+		source ~/.dotfiles/zshrc/os/linux_zshrc.zsh
 		;;
 esac
-
 
 # 細かい環境の設定ファイルを読み込む
 for f in `ls ~/.dotfiles/zshrc/env/*.zsh &&
@@ -31,6 +24,7 @@ for f in `ls ~/.dotfiles/zshrc/env/*.zsh &&
 	source $f
 done
 
+# shell用組み込みコマンドの読み込み
 source ~/.dotfiles/zshrc/buildin_cmd/*
 
 # カラー設定を読み込む
@@ -87,3 +81,9 @@ alias ns='npm start'
 alias rm='mv -b -t /var/tmp/trash'
 alias cp='cp -b'
 alias mv='mv -b'
+
+# shell用ゴミ箱を確認
+if [ ! -e /var/tmp/trash ]; then
+	mkdir /var/tmp/trash
+fi
+
