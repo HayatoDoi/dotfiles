@@ -29,7 +29,7 @@ fi
 
 # download dotfiles files.
 git clone https://github.com/HayatoDoi/dotfiles.git ${HOME}/.dotfiles
-ln -s ${HOME}/.dotfiles/zshrc ${HOME}/.zshrc
+ln -s ${HOME}/.dotfiles/zshrc/main_zshrc ${HOME}/.zshrc
 ln -s ${HOME}/.dotfiles/tmux.conf ${HOME}/.tmux.conf
 ln -s ${HOME}/.dotfiles/vimrc ${HOME}/.config/nvim/init.vim
 
