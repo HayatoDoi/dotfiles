@@ -1,14 +1,11 @@
 " =====================================================
-" This program is for the Japanese.
-" Therefore, comments are written in Japanese.
-" All will be understood by reading the source code.
-" =====================================================
 " File name          : .vimrc
 " Author             : Hayato Doi
-" Last Update        : 2019/11/04
+" Last Update        : 2021/02/03
 " Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Copyright (c) 2015-2019, Hayato Doi
+" Copyright (c) 2015-2021, Hayato Doi
+" =====================================================
 
 " 行番号のの表示
 set number
@@ -158,6 +155,9 @@ if $TAG_JUMP == "rtags"
   " <ctrl + j> = 定義へジャンプ
   map <C-j> :call rtags#JumpTo()<CR> 
 endif
+
+" for build
+map <C-s> :!make<CR>
 
 let g:lsp_highlight_references_enabled = 1
 highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
