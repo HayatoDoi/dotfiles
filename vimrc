@@ -215,6 +215,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('prabirshrestha/vim-lsp')
   " ペーストする時にインデントを入れない
   " call dein#add('ConradIrwin/vim-bracketed-paste')
+  " Rgコマンドでripgrepを実行する
+  call dein#add('jremmen/vim-ripgrep')
 
   " Required:
   call dein#end()
