@@ -99,7 +99,6 @@ alias vi='nvim'
 alias ns='npm start'
 
 #backupの作成
-alias rm='mv -b -t /var/tmp/trash'
 alias cp='cp -b'
 alias mv='mv -b'
 
