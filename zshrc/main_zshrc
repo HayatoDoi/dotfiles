@@ -26,8 +26,8 @@ case ${OSTYPE} in
 	darwin*) #mac
 		source $ZSHRC_DIR/os/macos_zshrc.zsh
 		;;
-	freebsd*) #bsd
-		source $ZSHRC_DIR/os/bsd_zshrc.zsh
+	freebsd*) #freebsd
+		source $ZSHRC_DIR/os/freebsd_zshrc.zsh
 		;;
 	linux*)  #linux
 		source $ZSHRC_DIR/os/linux_zshrc.zsh
