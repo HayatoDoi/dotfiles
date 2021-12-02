@@ -76,6 +76,10 @@ au BufNewFile,BufRead *.c set cindent
 au BufNewFile,BufRead *.c set noexpandtab
 au BufNewFile,BufRead *.c set tabstop=8
 au BufNewFile,BufRead *.c set shiftwidth=8
+au BufNewFile,BufRead *.h set cindent
+au BufNewFile,BufRead *.h set noexpandtab
+au BufNewFile,BufRead *.h set tabstop=8
+au BufNewFile,BufRead *.h set shiftwidth=8
 " [php]
 " PSR-2 coding standardにする.
 au BufNewFile,BufRead *.php set tabstop=4
@@ -97,14 +101,13 @@ let g:lightline = {'colorscheme':'wombat'}
 
 let g:gen_tags#gtags_default_map = 1
 
-" set fileencodings=utf-8,sjis,euc-jp,latin1
 let $LANG='ja_JP.UTF-8'
 set encoding=utf-8
-set fileencodings=sjis,utf-8,iso-2022-jp,euc-jp
+set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 
 " タグジャンプの設定
 "let TAG_JUMP = 'rtags'
-"let TAG_JUMP='gtags'
+let TAG_JUMP='gtags'
 
 " ==キーの変更==
 " 誤字用
@@ -143,12 +146,12 @@ imap <4-MiddleMouse> <Nop>
 nnoremap r <Nop>
 
 " gtags キーバインド
-if $TAG_JUMP == "gtags"
+" if $TAG_JUMP == "gtags"
   map <C-h> :Gtags -f %<CR>
   map <C-j> :GtagsCursor<CR>
   map <C-n> :cn<CR>
   map <C-p> :cp<CR>
-endif
+" endif
 
 " rtags キーバインド
 if $TAG_JUMP == "rtags"
