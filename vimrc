@@ -1,11 +1,9 @@
-" =====================================================
-" File name          : .vimrc
+" =============================================================================
+" File name          : vimrc
 " Author             : Hayato Doi
-" Last Update        : 2021/02/03
-" Since              : 2015/9/28
 " Outline            : vimの設定ファイル
-" Copyright (c) 2015-2021, Hayato Doi
-" =====================================================
+" Copyright (c) 2015, Hayato Doi
+" =============================================================================
 
 " 行番号のの表示
 set number
@@ -186,10 +184,7 @@ autocmd BufReadPost *
   \ endif
 
 
-call add(NERDTreeIgnore, "^.*\.o$")
-call add(NERDTreeIgnore, "^.*\.a$")
-
-"dein Scripts-----------------------------
+" == dein Scripts  ============================================================
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -206,6 +201,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here like this:
+  " == Plugins  ===============================================================
   " コメントを一括でつけてくれる
   call dein#add('tomtom/tcomment_vim')
   " ディレクトリツリーを表示するやつ
@@ -226,19 +222,22 @@ if dein#load_state('~/.cache/dein')
   call dein#add('jremmen/vim-ripgrep')
   " Findコマンドでfindを実行する
   call dein#add('HayatoDoi/vim-find')
+  " ===========================================================================
 
   " Required:
   call dein#end()
   call dein#save_state()
 endif
+" =============================================================================
 
 " Required:
+call map(dein#check_clean(), "delete(v:val, 'rf')")
+
+" == Plugin Settings ===========================================================
+" NERDTree
+let g:NERDTreeIgnore = []
+call add(g:NERDTreeIgnore, "^.*\.o$")
+call add(g:NERDTreeIgnore, "^.*\.a$")
+
 filetype plugin indent on
 syntax enable
-
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
-call map(dein#check_clean(), "delete(v:val, 'rf')")
-"End dein Scripts-------------------------
