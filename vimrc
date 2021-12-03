@@ -185,6 +185,10 @@ autocmd BufReadPost *
   \   exe "normal! g'\"" |
   \ endif
 
+
+call add(NERDTreeIgnore, "^.*\.o$")
+call add(NERDTreeIgnore, "^.*\.a$")
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -220,6 +224,8 @@ if dein#load_state('~/.cache/dein')
   " call dein#add('ConradIrwin/vim-bracketed-paste')
   " Rgコマンドでripgrepを実行する
   call dein#add('jremmen/vim-ripgrep')
+  " Findコマンドでfindを実行する
+  call dein#add('HayatoDoi/vim-find')
 
   " Required:
   call dein#end()
