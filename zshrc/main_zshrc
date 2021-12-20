@@ -38,12 +38,12 @@ esac
 source $ZSHRC_DIR/lib/include.zsh
 
 # 細かい環境の設定ファイルを読み込む
-Include $ZSHRC_DIR/env/"*.zsh"
-Include $ZSHRC_DIR/ignore_env/"*.zsh"
-Include $ZSHRC_DIR/job_zshrc/"*.zsh"
+Include $ZSHRC_DIR/env/*.zsh
+Include $ZSHRC_DIR/ignore_env/*.zsh
+Include $ZSHRC_DIR/job_zshrc/*.zsh
 
 # shell用組み込みコマンドの読み込み
-Include ~/.dotfiles/zshrc/buildin_cmd/"*"
+Include ~/.dotfiles/zshrc/buildin_cmd/*
 
 # local 実行ファイルpathの読み込み
 Include ~/.bin/include_path.zsh
