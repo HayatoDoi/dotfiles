@@ -1,5 +1,5 @@
 function Include(){
-	file_list=`ls $1 2>/dev/null`
+	file_list=`ls $* 2>/dev/null`
 	if [ $? -ne 0 ]; then
 		return 1;
 	fi
