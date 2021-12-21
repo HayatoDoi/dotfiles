@@ -1,27 +1,24 @@
-# =====================================================
-# This program is for the Japanese.
-# Therefore, comments are written in Japanese.
-# All will be understood by reading the source code.
-# =====================================================
-# File name          : main_zshrc
+# ============================================================================
+# File name          : main.zsh
 # Author             : Hayato Doi
-# Last Update        : 2020/1/29
-# Since              : 2015/7/14
-# Outline            : zshの設定ファイル
-# Copyright (c) 2015-2020, Hayato Doi
+# Outline            : Setting for the Z Shell.
+# License            : MIT
+# Copyright (c) 2015-2021, Hayato Doi
 
-# sshから起動したとき、tmuxを起動する
-if [ -n "$SSH_CONNECTION" ] && [[ ! -n $TMUX ]]; then
-	if tmux ls; then
-		tmux -u a
-	else
-		tmux -u
-	fi
-fi
+###############################################################################
+# Defines
+###############################################################################
+# zsh設定が格納されたディレクトリのパス
+export ZSHRC_DIR="${HOME}/.dotfiles/zshrc"
+# 独自コマンドにpathを通す
+export PATH=$PATH:$ZSHRC_DIR/cmd
+# 環境変数LANGの設定
+export LANG=ja_JP.UTF-8
 
-ZSHRC_DIR="${HOME}/.dotfiles/zshrc"
-
-# OSごとの設定を詠みこむ
+###############################################################################
+# Includes
+###############################################################################
+# Source settings for each OS.
 case ${OSTYPE} in
 	darwin*) #mac
 		source $ZSHRC_DIR/os/macos_zshrc.zsh
@@ -51,18 +48,18 @@ Include ~/.bin/include_path.zsh
 # カラー設定を読み込む
 Include $ZSHRC_DIR/color.zsh
 
-# 独自コマンドにpathを通す
-export PATH=$PATH:$ZSHRC_DIR/cmd
-
-# 環境変数LANGの設定
-export LANG=ja_JP.UTF-8
-
+###############################################################################
+# Z shell profiles
+###############################################################################
 # 補完機能設定
 autoload -U compinit
 compinit
 
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 autoload -Uz vcs_info
+
+# viキーバインドを使用
+#bindkey -v
 
 # viinsモードでバックスペースを使う
 bindkey -v '^?' backward-delete-char
@@ -74,9 +71,6 @@ SAVEHIST=10000
 setopt hist_ignore_dups
 setopt share_history
 
-# viキーバインド設定
-#bindkey -v
-
 # 補完候補のカーソル選択を有効にする設定
 zstyle ':completion:*:default' menu select=1
 
@@ -86,7 +80,9 @@ setopt nonomatch
 #補完を大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# エイリアス
+###############################################################################
+# Aliases
+###############################################################################
 alias grep='grep --colour=auto'
 
 alias ls='exa'
@@ -103,8 +99,20 @@ alias ns='npm start'
 alias cp='cp -b'
 alias mv='mv -b'
 
+###############################################################################
+# Misc
+###############################################################################
 # shell用ゴミ箱を確認
 if [ ! -e /var/tmp/trash ]; then
 	mkdir /var/tmp/trash
+fi
+
+# sshから起動したとき、tmuxを起動する
+if [ -n "$SSH_CONNECTION" ] && [[ ! -n $TMUX ]]; then
+	if tmux ls; then
+		tmux -u a
+	else
+		tmux -u
+	fi
 fi
 
