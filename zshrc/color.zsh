@@ -51,7 +51,7 @@ precmd(){
 RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@%m""%F{yellow}[%1(v|%1v|-----)]%f"" %~""
 %B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
 RootPrompt2="%B%F{yellow}>>>%f%b "
-RootRprompt="%D"
+OtherRprompt="%D{%y-%m-%d %H:%M:%S}"
 
 OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@%m""%F{cyan}[%1(v|%1v|-----)]%f"" %~""
 %B%F{green}>%f%F{cyan}>%f%F{blue}>%f%b "
