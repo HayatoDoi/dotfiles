@@ -1,14 +1,14 @@
 # .screenrc file
 #
-# ctrl+t -> esc ->ƒJ[ƒ\ƒ‹ƒL[‚Å©—R‚ÉˆÚ“®
-# ctrl+t -> : -> hardcopy -h <filename>‚Å—š—ğ‚ğ•Û‘¶
+# ctrl+t -> esc ->ã‚«ãƒ¼ã‚½ãƒ«ã‚­ãƒ¼ã§è‡ªç”±ã«ç§»å‹•
+# ctrl+t -> : -> hardcopy -h <filename>ã§å±¥æ­´ã‚’ä¿å­˜
 escape ^Tt
 termcapinfo linux ti@:te@
 termcapinfo xterm ti@:te@
 termcapinfo xterm-color ti@:te@
 defscrollback 102400
 
-# /var/log/screen/ ‚ÉƒƒO‚ğ•Û‘¶‚·‚é
+# /var/log/screen/ ã«ãƒ­ã‚°ã‚’ä¿å­˜ã™ã‚‹
 logfile /usr/home/hayato/work/screen_log/%Y%m%d_%c%s.log
 deflog flush secs
 deflog on
