@@ -12,7 +12,9 @@ function dotfile_setup_anyenv() {
 	git clone https://github.com/riywo/anyenv $HOME/.anyenv
 }
 
-if type anyenv > /dev/null 2>&1; then
+type anyenv > /dev/null 2>&1
+if [ $? != 0 ]; then
+	echo "if"
 	export PATH="$HOME/.anyenv/bin:$PATH"
 	eval "$(anyenv init -)"
 fi
