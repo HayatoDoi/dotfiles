@@ -34,6 +34,9 @@ esac
 # ライブラリの読み込み
 source $ZSHRC_DIR/lib/include.zsh
 
+# Source settings to enable functions.
+Include $ZSHRC_DIR/settings.zsh
+
 # 細かい環境の設定ファイルを読み込む
 Include $ZSHRC_DIR/env/*.zsh
 Include $ZSHRC_DIR/ignore_env/*.zsh
@@ -110,7 +113,7 @@ if [ ! -e /var/tmp/trash ]; then
 fi
 
 # sshから起動したとき、tmuxを起動する
-if [ -n "$SSH_CONNECTION" ] && [[ ! -n $TMUX ]]; then
+if [ $DOTFILES_TMUX_CONNECT = "ON" ] && [ -n "$SSH_CONNECTION" ] && [[ ! -n $TMUX ]]; then
 	if tmux ls; then
 		tmux -u a
 	else

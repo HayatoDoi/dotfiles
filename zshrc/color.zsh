@@ -1,8 +1,9 @@
-
-#-----------------------------------------
-
-
-#-----------------------------------------
+# ============================================================================
+# File name          : color.zsh
+# Author             : Hayato Doi
+# Outline            : シェルの色設定
+# License            : MIT
+# Copyright (c) 2015-2024, Hayato Doi
 
 function echonc() {
 	echo -n "\e[38;5;${1}m${2}\e[0m"
@@ -22,18 +23,6 @@ function echonc256() {
 	done
 }
 
-function convert_ls_color_linux2bsd() {
-	
-	30,Black,a
-	31,Red,b
-32,Green,c,
-33.Orange,d
-34,Blue,e
-35,Purple,f
-36,Cyan,g
-37,Grey,h
-
-}
 # 表示フォーマットの指定
 # %b ブランチ情報
 # %a アクション名(mergeなど)
@@ -46,31 +35,38 @@ precmd(){
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
-# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-# プロンプトを2行で表示、時刻を表示
-RootPrompt="%(?.%{%F{red}%n%f%}.%{%B%F{red}%n%f%b%})""@%m""%F{yellow}[%1(v|%1v|-----)]%f"" %~""
-%B%F{red}>`echo -n "\e[38;5;130m>"`%F{yellow}>%f%b "
-RootPrompt2="%B%F{yellow}>>>%f%b "
-OtherRprompt="%D{%y-%m-%d %H:%M:%S}"
-
-OtherPrompt="%(?.%{%F{green}%n%f%}.%{%B%F{green}%n%f%b%})""@%m""%F{cyan}[%1(v|%1v|-----)]%f"" %~""
-%B%F{green}>%f%F{cyan}>%f%F{blue}>%f%b "
-OtherPrompt2="%B%F{blue}>>>%f%b "
-OtherRprompt="%D{%y-%m-%d %H:%M:%S}"
-
 # root,非rootでコマンドの色を変える
 case ${UID} in
 	0)
-		PROMPT=$RootPrompt
-		PROMPT2=$RootPrompt2
-		RPROMPT=$RootRprompt
+		color_theme=$DOTFILES_ROOT_COLOR_THEME
 		;;
 	*)
-		PROMPT=$OtherPrompt
-		PROMPT2=$OtherPrompt2
-		RPROMPT=$OtherRprompt
+		color_theme=$DOTFILES_USER_COLOR_THEME
 		;;
 esac
+case ${color_theme} in
+	"GREEN")
+		color=(2 14 12)
+		;;
+	"RED")
+		color=(9 11 130)
+		;;
+	"VIOLET")
+		color=(5 172 192)
+		;;
+	*)
+		color=(0 0 0)
+		;;
+esac
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+# プロンプトを2行で表示、時刻を表示
+PROMPT="`echonc $color[1] %n`@%m`echonc $color[2] '[%1(v|%1v|-----)]'` %~
+`echonc $color[1] '>'``echonc $color[2] '>'``echonc $color[2] '>'` "
+PROMPT2="`echonc $color[2] '>>>'`"
+if [ $DOTFILES_TERMINAL_CLOCK = "ON" ];then
+RPROMPT="%D{%y-%m-%d %H:%M:%S}"
+fi
+
 # viinsキーバインド使用時, INSERTモードとNORMALモードでカーソルの色を変える
 # xterm依存かもしれない.
 function zle-line-init zle-keymap-select {
