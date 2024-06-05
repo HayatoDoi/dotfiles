@@ -31,25 +31,20 @@ case ${OSTYPE} in
 		;;
 esac
 
-# ライブラリの読み込み
-source $ZSHRC_DIR/lib/include.zsh
-
-# Source settings to enable functions.
-Include $ZSHRC_DIR/settings.zsh
-
 # 細かい環境の設定ファイルを読み込む
-Include $ZSHRC_DIR/env/*.zsh
-Include $ZSHRC_DIR/ignore_env/*.zsh
-Include $ZSHRC_DIR/job_zshrc/*.zsh
+source $ZSHRC_DIR/settings.zsh
+source $ZSHRC_DIR/env/*.zsh
+source $ZSHRC_DIR/ignore_env/*.zsh
+source $ZSHRC_DIR/job_zshrc/*.zsh
 
 # shell用組み込みコマンドの読み込み
-Include ~/.dotfiles/zshrc/buildin_cmd/*
+source ~/.dotfiles/zshrc/buildin_cmd/*
 
 # local 実行ファイルpathの読み込み
-Include ~/.bin/include_path.zsh
+source ~/.bin/include_path.zsh
 
 # カラー設定を読み込む
-Include $ZSHRC_DIR/color.zsh
+source $ZSHRC_DIR/color.zsh
 
 ###############################################################################
 # Z shell profiles
@@ -120,4 +115,3 @@ if [ $DOTFILES_TMUX_CONNECT = "ON" ] && [ -n "$SSH_CONNECTION" ] && [[ ! -n $TMU
 		tmux -u
 	fi
 fi
-
