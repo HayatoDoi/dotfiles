@@ -17,4 +17,6 @@ export DOTFILES_TERMINAL_CLOCK="ON"
 export DOTFILES_TMUX_CONNECT="OFF"
 
 # ユーザー設定で上書きする
-source ~/.dotfile_setting.zsh
+if [ -e ~/.dotfile_setting.zsh ]; then
+    source ~/.dotfile_setting.zsh
+fi

@@ -6,7 +6,11 @@
 # Copyright (c) 2015-2024, Hayato Doi
 
 function echonc() {
-	echo -n "\e[38;5;${1}m${2}\e[0m"
+	if [ $1 -eq -1 ];then
+		echo -n "${2}"
+	else
+		echo -n "\e[38;5;${1}m${2}\e[0m"
+	fi
 }
 
 function echonc256() {
@@ -38,10 +42,10 @@ precmd(){
 # root,非rootでコマンドの色を変える
 case ${UID} in
 	0)
-		color_theme=$DOTFILES_ROOT_COLOR_THEME
+		color_theme=$DOTFILES_COLOR_THEME_ROOT
 		;;
 	*)
-		color_theme=$DOTFILES_USER_COLOR_THEME
+		color_theme=$DOTFILES_COLOR_THEME_USER
 		;;
 esac
 case ${color_theme} in
@@ -55,7 +59,7 @@ case ${color_theme} in
 		color=(5 172 192)
 		;;
 	*)
-		color=(0 0 0)
+		color=(-1 -1 -1)
 		;;
 esac
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
