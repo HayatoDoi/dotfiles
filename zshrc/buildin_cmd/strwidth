@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# file name: strwidth
+# description: 文字列の横幅を計算するスクリプト
+#              半角文字は1、全角文字は2と判断する
+# mamo:
+#  使い方:
+#    <引数に文字列を指定する>
+#    $ strwidth ああああaaaa
+#      12
+#    <パイプで文字列を渡す>
+#    $ cat ああああ | strwidth
+#      8
+import re
+import sys
+import unicodedata
+
+if len(sys.argv) == 2:
+    input = sys.argv[1]
+elif len(sys.argv) == 1:
+    input = sys.stdin.readline()
+else:
+    sys.exit(1)
+input = re.sub(r'\x1B[^m]*m', '', input) # 色指定の出力は無効化する
+
+length = 0
+for char in input:
+    if unicodedata.east_asian_width(char) in 'FWA':
+        length += 2
+    else:
+        length += 1
+print(length)

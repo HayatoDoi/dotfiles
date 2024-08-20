@@ -3,7 +3,7 @@
 # Author             : Hayato Doi
 # Outline            : Setting for the Z Shell.
 # License            : MIT
-# Copyright (c) 2015-2021, Hayato Doi
+# Copyright (c) 2015-2024, Hayato Doi
 
 ###############################################################################
 # Defines
@@ -39,6 +39,7 @@ source $ZSHRC_DIR/job_zshrc/*.zsh
 
 # shell用組み込みコマンドの読み込み
 source ~/.dotfiles/zshrc/buildin_cmd/*
+export PATH=~/.dotfiles/zshrc/buildin_cmd/:$PATH
 
 # local 実行ファイルpathの読み込み
 source ~/.bin/include_path.zsh
@@ -57,10 +58,19 @@ compinit
 autoload -Uz vcs_info
 
 # viキーバインドを使用
-#bindkey -v
+bindkey -v
 
 # viinsモードでバックスペースを使う
 bindkey -v '^?' backward-delete-char
+
+# ctr + l でコンソールをクリアしたときにプロンプトを再表示する
+function clear_screen() {
+    clear
+    precmd
+    zle reset-prompt
+}
+zle -N clear_screen
+bindkey '^L' clear_screen
 
 # 履歴の設定
 HISTFILE=~/.zsh_history

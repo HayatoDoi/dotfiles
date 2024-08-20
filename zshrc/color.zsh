@@ -37,6 +37,17 @@ precmd(){
 	psvar=()
 	LANG=en_US.UTF-8 vcs_info
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+
+	left="`echonc $color[1] %n`@%m`echonc $color[2] '[%1(v|%1v|-----)]'` %~"
+	right="%D{%y-%m-%d %H:%M:%S} "
+	leftwidth=`print -n -P $left | strwidth`
+	rightwidth=`print -n -P $right | strwidth`
+	padwidth=$(($COLUMNS - ($leftwidth + $rightwidth) % $COLUMNS))
+	if [ $DOTFILES_TERMINAL_CLOCK = "ON" ];then
+		print -P $left${(r:$padwidth:: :)}$right
+	else
+		print -P $left
+	fi
 }
 
 # root,非rootでコマンドの色を変える
@@ -62,14 +73,7 @@ case ${color_theme} in
 		color=(-1 -1 -1)
 		;;
 esac
-# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-# プロンプトを2行で表示、時刻を表示
-PROMPT="`echonc $color[1] %n`@%m`echonc $color[2] '[%1(v|%1v|-----)]'` %~
-`echonc $color[1] '>'``echonc $color[2] '>'``echonc $color[2] '>'` "
-PROMPT2="`echonc $color[2] '>>>'`"
-if [ $DOTFILES_TERMINAL_CLOCK = "ON" ];then
-RPROMPT="%D{%y-%m-%d %H:%M:%S}"
-fi
+PROMPT="%B%F{$color[1]}>%f%F{$color[2]}>%f%F{$color[3]}>%f%b "
 
 # viinsキーバインド使用時, INSERTモードとNORMALモードでカーソルの色を変える
 # xterm依存かもしれない.
