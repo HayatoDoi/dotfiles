@@ -93,11 +93,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 ###############################################################################
 alias grep='grep --colour=auto'
 
-alias ls='exa'
-alias lst='exa -ltr'
-alias l='exa -ltr'
-alias la='exa -la'
-alias ll='exa -l'
+alias ls='eza'
+alias lst='eza -ltr'
+alias l='eza -ltr'
+alias la='eza -la'
+alias ll='eza -l'
 
 alias vim='nvim'
 alias vi='nvim'
