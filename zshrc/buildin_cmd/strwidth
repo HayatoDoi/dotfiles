@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # file name: strwidth
 # description: 文字列の横幅を計算するスクリプト
 #              半角文字は1、全角文字は2と判断する
