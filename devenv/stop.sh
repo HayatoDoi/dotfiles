@@ -1,0 +1,1 @@
+docker stop dev-linux && docker rm dev-linux
